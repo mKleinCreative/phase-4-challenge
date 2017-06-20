@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% include head.ejs %>
   <title>Vinyl</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
   <script type="text/javascript" src="/script.js"></script>
 </head>
 <body>
-
-  <h1>ERROR</h1>
-  <h2><%= error.message %></h2>
-  <pre><%= error.stack %></pre>
-
+  <% include header.ejs %>
+  <div class="body-container">
+    <h1>ERROR</h1>
+    <h2><%= error.message %></h2>
+    <pre><%= error.stack %></pre>
+  </div>
 </body>
 </html>

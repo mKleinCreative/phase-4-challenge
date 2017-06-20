@@ -11,9 +11,9 @@ INSERT INTO
   users (name, email, password)
 VALUES
   ('Me', 'me@me.com', 'me'),
-  ('Me', 'michael@michael.michael', 'michael'),
-  ('Me', 'hi@hi.com', 'hi'),
-  ('Me', 'neinmeinfraulein@nein.com', 'nein')
+  ('not Me', 'michael@michael.michael', 'michael'),
+  ('might be Me', 'hi@hi.com', 'hi'),
+  ('could very well be Me', 'neinmeinfraulein@nein.com', 'nein')
 ;
 
 INSERT INTO

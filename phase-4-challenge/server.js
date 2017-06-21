@@ -1,4 +1,5 @@
 const express = require('express')
+const session = require('express-session')
 const bodyParser = require('body-parser')
 const database = require('./database')
 const app = express()
@@ -6,11 +7,23 @@ const app = express()
 require('ejs')
 app.set('view engine', 'ejs');
 
+app.use(session({secret: 'iambatman'}));
+
 app.use(express.static('public'))
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
+var sess;
+
 app.get('/', (request, response) => {
-  response.render('splash')
+  sess = request.session
+  sess.email
+  sess.name
+  if(sess.email) {
+    response.redirect('profile/:id')
+  } else {
+    response.render('splash')
+  }
 })
 
 app.get('/signup', (request, response) => {
@@ -27,7 +40,6 @@ app.post('/signup/submit', (request, response) => {
       response.status(500).render('error', {error: error})
     } else {
       response.redirect('/profile')
-      console.log( '---===request.body===---', request.body )
     }
   })
 })
@@ -37,29 +49,35 @@ app.get('/signin', (request, response) => {
 })
 
 app.post('/signin', (request, response) => {
-  console.log( '---===request.body===---', request.body )
+  sess = request.session
   const email = request.body.user_email
   const password = request.body.user_password
   database.User.getUserByEmail( email, (error, userInfo) => {
-    console.log( '---===email===---', email )
     if (error) {
       response.status(500).render('error', {error: error})
     } else {
-      console.log( '---===userInfo===---', userInfo )
       response.render('profile', {user: userInfo[0]})
     }
   })
 })
 
+app.get('/logout', (request,response) => {
+  request.session.destroy(( error) => {
+    if (error) {
+      console.log(error);
+    } else {
+    response.redirect('/');
+    }
+  })
+})
+
 app.get('/profile/:id', (request, response) => {
-  console.log( '---===request.params.id===---', request.params.id )
   const userID = request.params.id
   database.User.getUserById( userID, (error, userInfo) => {
     if (error) {
       response.status(500).render('error', {error: error})
     } else {
       const user = userInfo[0]
-      console.log( '---===userInfo===---', userInfo )
       response.render('profile', {user: user})
     }
   })

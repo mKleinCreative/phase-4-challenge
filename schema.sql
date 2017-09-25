@@ -20,7 +20,7 @@ DROP TABLE IF EXISTS "reviews";
 CREATE TABLE "reviews" (
   id SERIAL PRIMARY KEY,
   user_id INTEGER,
-  review VARCHAR(255) DEFAULT NULL
+  review VARCHAR(255) NOT NULL
 );
 
 ALTER TABLE "reviews" ADD FOREIGN KEY (user_id) REFERENCES "users" ("id") ON DELETE CASCADE;

@@ -19,8 +19,9 @@ app.get('/', (request, response) => {
   sess = request.session
   sess.email
   sess.name
+  sess.id
   if(sess.email) {
-    response.redirect('profile/:id')
+    response.redirect('profile/:${}')
   } else {
     response.render('splash')
   }
@@ -66,7 +67,7 @@ app.get('/logout', (request,response) => {
     if (error) {
       console.log(error);
     } else {
-    response.redirect('/');
+      response.redirect('/');
     }
   })
 })

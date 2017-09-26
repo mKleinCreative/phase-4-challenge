@@ -1,0 +1,21 @@
+CREATE TABLE albums (
+  id SERIAL,
+  title VARCHAR(255) NOT NULL,
+  artist VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE users (
+  id SERIAL,
+  name VARCHAR(30) NOT NULL,
+  email VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE reviews (
+  id SERIAL,
+  album_id VARCHAR(255) NOT NULL,
+  user_id VARCHAR(255) NOT NULL,
+  review_text VARCHAR(255) NOT NULL
+);
+
+ALTER TABLE reviews ADD FOREIGN KEY (album_id) REFERENCES "albums" ("id") ON DELETE CASCADE;
+ALTER TABLE reviews ADD FOREIGN KEY (user_id) REFERENCES "users" ("id") ON DELETE CASCADE;

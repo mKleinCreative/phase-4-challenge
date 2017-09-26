@@ -1,0 +1,11 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+.body-container {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+}

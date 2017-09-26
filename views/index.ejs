@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <% include head.ejs %>
-  <title>Vinyl</title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
-</head>
-<body>
-  <% include header.ejs %>
-  <div class="body-container">
-
-  <h1>Vinyl</h1>
-
-  <h2>Records</h2>
+<%- include('./partials/header.ejs') %>
 
   <div class="album-list">
     <% albums.forEach(function(album) { %>
@@ -22,7 +8,5 @@
       </div>
     <% }) %>
   </div>
-  </div>
 
-</body>
-</html>
+<% include ./partials/footer.ejs %>

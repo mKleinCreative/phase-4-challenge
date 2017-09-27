@@ -1,5 +1,27 @@
 html, body {
   margin: 0;
   padding: 0;
+  align-items: center;
+  height: 100vw;
   width: 100vw;
+}
+
+.form-container {
+  background-color: white;
+  width: 500px;
+  height: 480px;
+  top: 150px;
+  padding: 25px 20px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+  z-index: 15;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }

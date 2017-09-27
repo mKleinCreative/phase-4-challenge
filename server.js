@@ -11,6 +11,8 @@ const index = require('./controllers/index');
 require('ejs')
 app.set('view engine', 'ejs');
 
+const { connectionString } = require('./models/helpers');
+
 app.use(session({
   store: new pgSession({
     conString: connectionString,

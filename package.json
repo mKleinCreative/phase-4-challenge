@@ -7,8 +7,9 @@
     "start:dev": "nodemon server.js",
     "db:create": "createdb vinyl",
     "db:drop": "dropdb vinyl",
-    "db:schema": "psql -d vinyl < schema.sql",
-    "db:seed": "psql -d vinyl < albums.sql"
+    "db:schema": "psql -d vinyl < models/schema.sql && psql vinyl < node_modules/connect-pg-simple/table.sql",
+    "db:seed": "psql -d vinyl < models/albums.sql",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:schema && npm run db:seed"
   },
   "license": "MIT",
   "dependencies": {

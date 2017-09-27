@@ -12,10 +12,10 @@ const reviews = require('./reviews/reviews');
 const auth = require('./auth/auth');
 
 router.use('/', home);
-router.use('/auth', auth);
 router.use('/albums', albums);
-router.use('/users', users);
+router.use('/user', users);
 router.use('/sign-in', signin);
+router.use('/auth', console.log);
 router.use('/sign-out', signout);
 router.use('/sign-up', signup);
 router.use('/reviews', reviews);

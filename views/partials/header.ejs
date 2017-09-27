@@ -11,22 +11,21 @@
       <ul class="navbar-nav">
         <% if(user) { %>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/user/<%= user.id %>">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sign Out</a>
+            <a class="nav-link" href="/sign-out">Sign Out</a>
           </li>
         <% } else { %>
           <li class="nav-item mr-auto">
-            <a class="nav-link" href="#">Sign Up</a>
+            <a class="nav-link" href="/sign-up">Sign Up</a>
           </li>
           <li class="nav-item mr-auto">
-            <a class="nav-link" href="#">Sign In</a>
+            <a class="nav-link" href="/sign-in">Sign In</a>
           </li>
         <% } %>
       </ul>
     </div>
   </nav>
-  
-  <h2>Records</h2>
+
 

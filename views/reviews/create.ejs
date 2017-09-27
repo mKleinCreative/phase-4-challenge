@@ -1,7 +1,8 @@
 <% include ../partials/header.ejs %>
 
 <form class="form container align-items-center" action="/albums/<%= album.id %>/reviews/new" method="POST" style="height: 870px; width: 400px; margin-bottom: 50px;">
-  <h3 class="form-group col-md-auto">New Review For <% album.title %></h3>
+  <h3 class="form-group col-md-auto">New Review For "<%= album.title %>"</h3>
+  <h4 class="form-group col-md-auto">by <%= album.artist %></h4>
   <div class="form-group col-md-auto" >
     <label for="body">Review</label>
     <textarea name="review_text" rows="10" cols="50" style="width: 95%; border-radius: 2.px;" placeholder="Review goes here"></textarea>

@@ -18,16 +18,25 @@ router.get('/:albumID', (request, response) => {
       reviewFunctions.displayAlbumSpecificReviews(album.id)
         .then((albumReviews) => {
           response.render('album', { album, user, reviews: albumReviews });
+        }).catch((displayError) => {
+          response.render('error', { error: displayError });
         });
     }
   });
 });
 
 router.get('/:id/reviews/new', (request, response) => {
-  albumFunctions.displayById(request.params.id)
-    .then((album) => {
-      response.render('reviews/create', { user: request.user, album, message: '' });
-    });
+  const albumID = request.params.id
+  const user = request.user
+
+  albumFunctions.displayById(albumID, (error, album) => {
+    if (error) {
+      response.status(500).render('error', { error, user });
+    } else {
+      const albumForReview = album[0];
+      response.render('reviews/create', { user: request.user, album: albumForReview, message: '' });
+    }
+  });
 });
 
 router.post('/:id/reviews/new', (request, response) => {

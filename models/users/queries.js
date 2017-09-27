@@ -32,6 +32,7 @@ const getById = (id) => {
      id=$1
      `, [id]);
 };
+
 module.exports = {
   create,
   getByEmail,

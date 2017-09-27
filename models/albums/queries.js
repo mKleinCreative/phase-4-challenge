@@ -1,38 +1,26 @@
-const { db } = require('../helpers');
+const { query } = require('../helpers');
 
-const displayAll = () => {
-  return db.any(`
+const displayAll = (callback) => {
+  query(`
     SELECT
       *
     FROM
       albums
-  `, []);
+  `, [], callback);
 };
 
-const displayByTitle = (title) => {
-  return db.any(`
-    SELECT
-      *
-    FROM
-      albums
-    WHERE
-      albums.title = $1
-  `, [title]);
-};
-
-const displayById = (albumID) => {
-  return db.any(`
+const displayById = (albumID, callback) => {
+  query(`
     SELECT
       *
     FROM
       albums
     WHERE
       albums.id = $1
-  `, [albumID]);
+  `, [albumID], callback);
 };
 
 module.exports = {
   displayAll,
-  displayByTitle,
   displayById,
 };

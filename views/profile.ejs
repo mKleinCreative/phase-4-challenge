@@ -2,43 +2,22 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-6 col-md-4 d-flex justify-content-center user-info">
-
-      <div>
+    <div class="col-auto">
       <img src="<%= user.user_image %>" class="profile-picture-main" >
-
-      <% if (editing) { %>
-        <h3>Edit Profile</h3>
-          <form action="/profile/edit" method="POST">
-            <div class="form-group">
-              <label for="user_image">User Image URL</label>
-             <input style="width: 95%; border-radius: 2px;" type="text" name="user_image" value="<%= user.user_image %>" placeholder="Image URL">
-            </div>
-            <div class="form-group"action="/users/profile/edit" method="POST">
-              <label for="name">User Name</label>
-             <input style="width: 95%; border-radius: 2px;" type="text" name="name" value="<%= user.name %>" placeholder="User Name">
-            </div>
-            <div class="form-group">
-              <label for="current_city">Current City</label>
-              <input style="width: 95%; border-radius: 2.px;" type="text" name="current_city" value="<%= user.current_city %>" placeholder="Where are you now ?">
-            </div>
-            <input type="hidden" name="id" value="<%= (user.id) %>">
-            <br>
-            <button type="submit" class="btn btn-success btn-lg btn-block" name="login-submit">Save Changes</button>
-          </form>
-      <% } else { %>
-      <h3>User Profile</h3>
-      <p><%= user.name %></p>
-      <p><%= user.date_joined %></p>
-      <form action="/profile/edit" method="GET">
-       <button type="submit" class="btn btn-primary btn-lg btn-block" name="login-submit">Edit Profile</button>
-      </form>
-      <% } %>
     </div>
+    <div class="col-6 col-md-4 d-flex justify-content-center user-info">
+      <div class="wrapper">
+        <div>
+          <h2><%= user.name %></h2>
+          <p>Email: <%= user.email %></p>
+          <p>Date Joined: <%= user.date_joined %></p>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col col-md-8 posts">
-     <h2>Reviews</h2>
-     <% include ../reviews/view.ejs %>
+      <h2>Reviews</h2>
     </div>
   </div>
 </div>

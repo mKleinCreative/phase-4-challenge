@@ -1,12 +1,31 @@
 <%- include('./partials/header.ejs') %>
-
-  <div class="album-list">
-    <% albums.forEach(function(album) { %>
-      <div>
-        <h5><a href="/albums/<%= album.id %>"><%= album.title %></a></h5>
-        <span><%= album.artist %></span>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">Vinyl</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col album-list">
+        <h2>Albums</h2>
+        <% albums.forEach(function(album) { %>
+          <div class="list-group">
+            <a href=/albums/<%= album.id %> class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><%= album.title %></h5>
+                <small><%= album.artist %></small>
+              </div>
+            </a>
+          </div>
+          <% }) %>
       </div>
-    <% }) %>
+      <div class="col review-list">
+        <h2>Recent Reviews</h2>
+        <br>
+        <% include ./reviews/view.ejs %>
+      </div>
+    </div>
   </div>
 
 <% include ./partials/footer.ejs %>
+

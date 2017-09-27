@@ -25,3 +25,8 @@ html, body {
   justify-content: center;
   margin-top: 50px;
 }
+
+.profile-picture-main {
+  height: 256px ;
+  width: 256px ;
+}

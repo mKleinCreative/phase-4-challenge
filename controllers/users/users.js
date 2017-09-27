@@ -5,7 +5,6 @@ const session = require('cookie-session');
 
 const userFunctions = require('../../models/users/queries');
 const reviewFunctions = require('../../models/reviews/queries');
-const signin = require('./signin/signin');
 
 router.get('/:user_id', (request, response) => {
   const { user_id } = request.params;

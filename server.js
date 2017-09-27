@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(index);
 
 app.use((request, response) => {
-  response.status(404).render('not_found', request.session.user)
+  response.status(404).render('not_found', { user: request.session.user })
 })
 
 const port = process.env.PORT || 3000

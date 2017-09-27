@@ -1,9 +1,9 @@
 <% reviews.forEach((reviews) => { %>
   <div class="review-div">
-    <h4><a href=/reviews/<%= reviews.id %>> <%= reviews.title %> </a></h4>
+    <h4><a href=/albums/<%= reviews.album_id %>> <%= reviews.title %> </a></h4>
     <h6><%= reviews.time_made %></h6>
     <h5>"<%= reviews.review_text %>"</h5>
-    <h6>By: <%= reviews.name %></h6>
+    <h6>By: <a href=/user/<%= reviews.user_id %>><%= reviews.name %></a></h6>
     <form class="delete-post" action='/reviews/<%= reviews.id %>/delete' method="post">
       <a href=/reviews/<%= reviews.id %>/delete><i class="fa fa-trash-o" aria-hidden="true"></i></a>
     </form>

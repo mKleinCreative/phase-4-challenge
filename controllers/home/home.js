@@ -12,7 +12,7 @@ router.get('/', (request, response) => {
     } else {
       reviewFunctions.displayRecent()
         .then((recentReviews) => {
-          console.log( '---===recentReviews===---', recentReviews ); 
+
           response.render('index', { albums, user: request.user || null, reviews: recentReviews });
         }).catch((recentReviewError) => {
           response.render('error', { error: recentReviewError, user: request.user || null });

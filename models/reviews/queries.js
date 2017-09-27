@@ -45,7 +45,7 @@ const displaySingleReview = (id) => {
     FROM
       reviews
     WHERE
-    reviews.id = $1
+      reviews.id = $1
   `, [id])
 };
 
@@ -66,8 +66,15 @@ const displayAlbumSpecificReviews = (album_id) => {
       *
     FROM
       reviews
+    INNER JOIN
+      users
+    ON
+      reviews.user_id=users.id
     WHERE
       reviews.album_id = $1
+    ORDER BY
+      reviews.id
+    desc
   `, [album_id]);
 };
 

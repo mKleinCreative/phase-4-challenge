@@ -5,6 +5,7 @@ const router = express.Router();
 const albumFunctions = require('../../models/albums/queries');
 const reviewFunctions = require('../../models/reviews/queries');
 
+
 router.get('/:albumID', (request, response) => {
   const albumID = request.params.albumID;
   const user = request.user;
@@ -20,6 +21,25 @@ router.get('/:albumID', (request, response) => {
         });
     }
   });
+});
+
+router.get('/:id/reviews/new', (request, response) => {
+  albumFunctions.displayById(request.params.id)
+    .then((album) => {
+      response.render('reviews/create', { user: request.user, album, message: '' });
+    });
+});
+
+router.post('/:id/reviews/new', (request, response) => {
+  const albumID = request.params.id;
+  const { review_text } = request.body;
+  const userID = request.user.id;
+  reviewFunctions.create(userID, albumID, review_text)
+    .then((newReview) => {
+      response.redirect(`/albums/${albumID}`)
+    }).catch((error) => {
+      response.render('error', { error, user })
+    });
 });
 
 module.exports = router;

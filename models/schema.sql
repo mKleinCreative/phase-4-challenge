@@ -17,7 +17,7 @@ CREATE TABLE users (
 
 DROP TABLE IF EXISTS reviews;
 CREATE TABLE reviews (
-  id SERIAL PRIMARY KEY,
+  review_id SERIAL PRIMARY KEY,
   album_id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
   review_text TEXT NOT NULL,

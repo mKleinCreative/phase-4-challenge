@@ -10,7 +10,10 @@ router.get('/:user_id', (request, response) => {
   const { user_id } = request.params;
   userFunctions.getById(user_id)
     .then((requestedUser) => {
-      response.render('profile', { user: requestedUser });
+      reviewFunctions.displayUserSpecificReviews(user_id)
+        .then((userReviews) => {
+          response.render('profile', { user: requestedUser, reviews: userReviews });
+        });
     });
 });
 

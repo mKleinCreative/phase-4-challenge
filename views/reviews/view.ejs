@@ -4,10 +4,13 @@
     <h6><%= reviews.time_made %></h6>
     <h5>"<%= reviews.review_text %>"</h5>
     <h6>By: <a href=/user/<%= reviews.user_id %>><%= reviews.name %></a></h6>
-    <form class="delete-post" action='/reviews/<%= reviews.id %>/delete' method="post">
-      <a href=/reviews/<%= reviews.id %>/delete><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    <form
+    onsubmit="return confirm('Are you sure you would like to delete this review?')"
+    class="delete-post" 
+    action=/reviews/<%= reviews.review_id %>/delete
+    method="post">
+      <button type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
     </form>
-    <a href="/reviews/<%= reviews.id %>/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
   </div>
   <br>
 <% }); %>
